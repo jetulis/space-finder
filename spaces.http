@@ -1,5 +1,12 @@
-GET   https://4i2ol8pmb8.execute-api.us-east-1.amazonaws.com/prod/spaces
+GET https://4i2ol8pmb8.execute-api.us-east-1.amazonaws.com/prod/spaces
 ###
 
-POST   https://4i2ol8pmb8.execute-api.us-east-1.amazonaws.com/prod/spaces
-###
+
+POST https://4i2ol8pmb8.execute-api.us-east-1.amazonaws.com/prod/spaces
+content-type: application/json
+
+ {
+    "location": "Dublin"
+ }
+
+##### need leave a blank line between content-type and {} 

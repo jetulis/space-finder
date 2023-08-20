@@ -31,6 +31,14 @@ export class LambdaStack extends Stack {
             }
         })
 
+        // git spacesLambda to access dynamo db table by addtoRolepolicy
+        spacesLambda.addToRolePolicy(new PolicyStatement({
+            effect: Effect.ALLOW,
+            resources: [props.spacesTable.tableArn],
+            actions: ['dynamodb:*']
+            }
+            ))
+
         // NOTE: give lambda to access s3 buckets
         // helloLambda.addToRolePolicy(new PolicyStatement({
         //     effect: Effect.ALLOW,
@@ -38,7 +46,7 @@ export class LambdaStack extends Stack {
         //     resources: ['*']
         // }),
         // )
-
+ 
         // to export the lambda integration, needs member var,and setting it
         this.spacesLambdaIntegration = new LambdaIntegration(spacesLambda)
     }
