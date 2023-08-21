@@ -7,8 +7,8 @@ import { v4 } from "uuid";
 
 export async function postSpaces(event: APIGatewayProxyEvent, ddbClient:DynamoDBClient) : Promise<APIGatewayProxyResult>{
     const randomId = v4()
-
     const item = JSON.parse(event.body);
+
     const params = {
         TableName: process.env.TABLE_NAME,
         Item: {
@@ -19,10 +19,10 @@ export async function postSpaces(event: APIGatewayProxyEvent, ddbClient:DynamoDB
             // price: { S: item.price },
         }
     }
-
+    console.log('params:',params);
     // write params to dynamo db table
     const response = await ddbClient.send(new PutItemCommand(params));
-    console.log(response);
+    console.log('response:',response);
     
     // return APIGatewayProxyResult from dynamodb response
     return {

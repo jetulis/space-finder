@@ -1,5 +1,4 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "aws-lambda"
-import { v4 } from "uuid";
 import { S3Client, ListBucketsCommand } from "@aws-sdk/client-s3";
 // $ npm i -D @types/aws-lambda
 // exports.main = async function(event, context) {

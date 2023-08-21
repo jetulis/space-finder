@@ -10,3 +10,6 @@ content-type: application/json
  }
 
 ##### need leave a blank line between content-type and {} 
+
+
+GET https://4i2ol8pmb8.execute-api.us-east-1.amazonaws.com/prod/spaces?id=47642bd9-fcf1-4c80-a7d0-5a863666e9ff
