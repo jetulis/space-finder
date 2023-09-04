@@ -5,6 +5,7 @@ import { getSpaces } from "./GetSpaces";
 import { updateSpaces } from "./UpdateSpace";
 import { addCorsHeader } from "../shared/Utils";
 import { deleteSpace } from "./DeleteSpace";
+import { MissingFieldError } from "../shared/Validator";
 
 const ddbClient = new DynamoDBClient({}) //region: 'us-east-1'
 
@@ -42,7 +43,14 @@ let response: APIGatewayProxyResult;
                 break;
         }
     } catch (error) {
-        console.error(error)
+        // console.error(error)
+        //console.log('error:', error)
+        if (error instanceof MissingFieldError){
+            return {
+                statusCode: 400,
+                body: error.message // not JSON.stringify(error)
+            }
+        }
         return {
             statusCode: 500,
             body: JSON.stringify(error)

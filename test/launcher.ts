@@ -14,11 +14,16 @@ process.env.TABLE_NAME = "SpacesTable-1212736b36d9" ;
 // focus on launcher.ts test file, then click on Debug local (on to -> button , not dropdown)
 
 // .vscode/launch.json has the params for region and table for testing ( "TABLE_NAME": "SpacesTable-12a3e78b46eb" )
-
+// npx ts-node test/launcher.ts 
 handler({
-    httpMethod: "DELETE",
+    httpMethod: "POST",
     queryStringParameters: {
-        id: "37007a3a-2173-449e-8eda-a5753de1c1b8"
+        id: "06e60c9e-8949-416b-89d1-756527b5ab10"
     },
+    body: JSON.stringify({
+        location: "Paris",
+    })
 
-} as any, {} as any)
+} as any, {} as any).then(result => {
+    console.log(result)
+})
