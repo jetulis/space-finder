@@ -1,15 +1,34 @@
-GET https://4i2ol8pmb8.execute-api.us-east-1.amazonaws.com/prod/spaces
-###
-
-
-POST https://4i2ol8pmb8.execute-api.us-east-1.amazonaws.com/prod/spaces
+PUT https://5r8tbpbjwi.execute-api.us-east-1.amazonaws.com/prod/spaces?id=37007a3a-2173-449e-8eda-a5753de1c1b8
 content-type: application/json
 
  {
-    "location": "Dublin"
+    "location": "Granada 33"
+ }
+
+##########
+
+GET https://5r8tbpbjwi.execute-api.us-east-1.amazonaws.com/prod/spaces
+###
+
+
+POST https://5r8tbpbjwi.execute-api.us-east-1.amazonaws.com/prod/spaces
+content-type: application/json
+
+ {
+    "location": "Wantang"
  }
 
 ##### need leave a blank line between content-type and {} 
 
+DELETE https://5r8tbpbjwi.execute-api.us-east-1.amazonaws.com/prod/spaces?id=37007a3a-2173-449e-8eda-a5753de1c1b8
 
-GET https://4i2ol8pmb8.execute-api.us-east-1.amazonaws.com/prod/spaces?id=47642bd9-fcf1-4c80-a7d0-5a863666e9ff
+
+GET https://5r8tbpbjwi.execute-api.us-east-1.amazonaws.com/prod/spaces?id=37007a3a-2173-449e-8eda-a5753de1c1b8
+
+
+# $ npx ts-node test/launcher.ts 
+# getResponse: {
+#   statusCode: 200,
+#   body: '{"id":{"S":"47642bd9-fcf1-4c80-a7d0-5a863666e9ff"},"location":{"S":"Dublin"}}'
+# }
+

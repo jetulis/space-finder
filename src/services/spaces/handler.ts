@@ -2,22 +2,42 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "aws-lambda
 import { postSpaces } from "./PostSpaces";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { getSpaces } from "./GetSpaces";
+import { updateSpaces } from "./UpdateSpace";
+import { addCorsHeader } from "../shared/Utils";
+import { deleteSpace } from "./DeleteSpace";
 
 const ddbClient = new DynamoDBClient({}) //region: 'us-east-1'
 
 export async function handler(event: APIGatewayProxyEvent, context: Context) : Promise<APIGatewayProxyResult>{
-    let message: string;
+let response: APIGatewayProxyResult;
     try {
         switch (event.httpMethod) {
             case 'GET':
-                //message = 'hello from GET'
                 const getResponse = await getSpaces(event, ddbClient)
                 console.log('getResponse:', getResponse)
-                return getResponse;
+                response = getResponse
+                break;
             case 'POST':
-                // message = 'hello from POST'
+                //insert
+                console.log('----- starting post|insert ---- ')
                 const postResponse = await postSpaces(event, ddbClient)
-                return postResponse;
+                console.log('postResponse:', postResponse)
+                response = postResponse
+                break;
+            case 'PUT':
+                // update
+                console.log('----- starting put|update ---- ')
+                const putResponse = await updateSpaces(event, ddbClient)
+                console.log('putResponse', putResponse)
+                response = putResponse
+                break;
+            case 'DELETE':
+                // update
+                console.log('----- starting put|update ---- ')
+                const deleteResponse = await deleteSpace(event, ddbClient)
+                console.log('deleteResponse', putResponse)
+                response = deleteResponse
+                break;
             default:
                 break;
         }
@@ -29,10 +49,11 @@ export async function handler(event: APIGatewayProxyEvent, context: Context) : P
         }
     }
 
-    const response: APIGatewayProxyResult = {
-        statusCode: 200,
-        body: JSON.stringify(message)
-    }
-    console.log('event:' , event)
+    // const response: APIGatewayProxyResult = {
+    //     statusCode: 200,
+    //     body: JSON.stringify(message)
+    // }
+    addCorsHeader(response)
+    console.log('response:' , response)
     return response;
 }

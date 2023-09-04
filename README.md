@@ -16,3 +16,7 @@ Init CDK Proj
 - lambda code itself is located under ./services folder
 - then stacks/LambdaStack.ts
 - then Launcher to include
+
+
+- marshall / unmarshall : @aws-sdk/util-dynamodb or 
+- DynamoDBDocumentClient from @aws-sdk/lib-dynamodb
