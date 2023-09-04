@@ -14,8 +14,9 @@ export class ApiStack extends Stack {
 
         const api = new RestApi(this, 'Api')
         const spacesResource =  api.root.addResource('spaces')
+        // need to add METHOD here, otherwise it will say 'missing token'
         spacesResource.addMethod('GET', props.spacesLambdaIntegration)
-        spacesResource.addMethod('POST', props.spacesLambdaIntegration) // need to add METHOD here
+        spacesResource.addMethod('POST', props.spacesLambdaIntegration)
         spacesResource.addMethod('PUT', props.spacesLambdaIntegration)
         spacesResource.addMethod('DELETE', props.spacesLambdaIntegration)
     }

@@ -35,8 +35,13 @@ export class LambdaStack extends Stack {
         spacesLambda.addToRolePolicy(new PolicyStatement({
             effect: Effect.ALLOW,
             resources: [props.spacesTable.tableArn],
-            actions: ['dynamodb:*']
-            }
+            actions: [
+                'dynamodb:PutItem',
+                'dynamynamodb:GetItem',
+                'dynamodb:Scan',
+                'dynamodb:UpdateItem',
+                'dynamodb:DeleteItem'
+            ]}
             ))
 
         // NOTE: give lambda to access s3 buckets

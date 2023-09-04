@@ -2,7 +2,7 @@ PUT https://5r8tbpbjwi.execute-api.us-east-1.amazonaws.com/prod/spaces?id=37007a
 content-type: application/json
 
  {
-    "location": "Granada 33"
+    "location": "Granada 55"
  }
 
 ##########
@@ -15,7 +15,8 @@ POST https://5r8tbpbjwi.execute-api.us-east-1.amazonaws.com/prod/spaces
 content-type: application/json
 
  {
-    "location": "Wantang"
+    "location": "Wuhan",
+    "name": "Best location"
  }
 
 ##### need leave a blank line between content-type and {} 

@@ -1,11 +1,10 @@
-import { Fn, Stack } from "aws-cdk-lib"
 import { randomUUID } from "crypto"
-
 import { JsonError } from "./Validator";
 import { APIGatewayProxyResult } from "aws-lambda";
 
 export function createRandomId(){
     return randomUUID();
+    // return v4()
 }
 
 export function parseJSON(arg: string){

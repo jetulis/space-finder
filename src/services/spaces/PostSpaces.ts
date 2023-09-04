@@ -10,9 +10,13 @@ import { validateAsSpaceEntry } from "../shared/Validator";
 // we can use 1) marshall, unmarshall from "@aws-sdk/util-dynamodb"
 //            2) DynamoDBDocumentClient from "@aws-sdk/lib-dynamodb" 
 export async function postSpaces(event: APIGatewayProxyEvent, ddbClient:DynamoDBClient) : Promise<APIGatewayProxyResult>{
+
+    // const randomId= v4() : not good practice to call directly. rather use localized one.
     const randomId = createRandomId()
 
+    // instead of JSON.parse, use parseJSON (error handled)
     const item = parseJSON(event.body);
+    // is event.body is not valid json ? wiil throw 500 internal server error...
     // inserting id into event.body
     item.id = randomId
     validateAsSpaceEntry(item)
